@@ -4,18 +4,19 @@ import java.math.BigDecimal;
 import java.util.Currency;
 
 public class Product extends BaseModel {
-
+    private int id;
     private BigDecimal defaultPrice;
     private Currency defaultCurrency;
     private ProductCategory productCategory;
     private Supplier supplier;
+    private String picture;
 
-
-    public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
+    public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier, String picture) {
         super(name, description);
         this.setPrice(defaultPrice, currencyString);
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
+        this.picture = picture;
     }
 
     public BigDecimal getDefaultPrice() {
@@ -52,6 +53,10 @@ public class Product extends BaseModel {
         this.productCategory.addProduct(this);
     }
 
+    public String getPicture() {
+        return this.picture;
+    }
+
     public Supplier getSupplier() {
         return supplier;
     }
@@ -60,6 +65,7 @@ public class Product extends BaseModel {
         this.supplier = supplier;
         this.supplier.addProduct(this);
     }
+
 
     @Override
     public String toString() {
