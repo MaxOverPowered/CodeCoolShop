@@ -25,18 +25,21 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
         //setting up a new supplier
-        Supplier amazon = new Supplier("Amazon", "Digital content and services");
-        supplierDataStore.add(amazon);
         Supplier lenovo = new Supplier("Lenovo", "Computers");
         supplierDataStore.add(lenovo);
+        Supplier dell = new Supplier("Dell", "Computers");
+        supplierDataStore.add(dell);
+        Supplier asus = new Supplier("Asus", "Computers");
+        supplierDataStore.add(asus);
 
         //setting up a new product category
-        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
-        productCategoryDataStore.add(tablet);
-
+        ProductCategory laptops = new ProductCategory("Laptop", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
+        productCategoryDataStore.add(laptops);
+        ProductCategory speakers = new ProductCategory("Speaker", "Hardware", "A speaker is one type of electroacoustic transducer, that is, a device that converts a electrical audio signal into a corresponding sound.");
+        productCategoryDataStore.add(speakers);
         //setting up products and printing it
-        productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
-        productDataStore.add(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
-        productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
+        productDataStore.add(new Product("Lenovo ThinkPad X1 Carbon Gen 9", new BigDecimal("2111"), "USD", "Intel Core i5-1135G7, 16GB RAM, 256GB SSD, Intel Iris Xe Graphics, Windows 10 Pro", laptops, lenovo));
+        productDataStore.add(new Product("Dell XPS 13 Plus 9320", new BigDecimal("2360"), "USD", "Superb 4K screen and powerful 12th-generation Intel Core i7 processor, plus 16GB (gigabytes) of RAM (memory) and 512GB of very fast solid-state drive (SSD) storage.", laptops, dell));
+        productDataStore.add(new Product("ASUS ROG Flow X13", new BigDecimal("1200"), "USD", "Powerful gaming has never been so flexible with up to the latest Ryzen 9 5980HS CPU and GeForce RTX 3080", laptops, asus));
     }
 }
