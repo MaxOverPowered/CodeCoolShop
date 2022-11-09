@@ -8,7 +8,6 @@
     <title>Codecool Shop</title>
 
     <script src='/static/js/main.js' defer></script>
-    <script src="/static/js/button.js" defer></script>
 
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
@@ -34,10 +33,10 @@
 </head>
 
 <body>
-
+<div th:replace="navbar.html :: copy"></div>
 <div class="jumbotron text-center">
     <h1>Codecool Shop</h1>
-    <i class="fa badge fa-lg" value=0>&#xf07a;</i>
+    <a href="checkout"><i class="fa badge fa-lg" value=0>&#xf07a;</i></a>
 </div>
 
 <div class="container">
@@ -73,7 +72,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success add-to-cart" th:attr="data-id=${iterStat.current.getId()}" href="#">Add
+                        <a class="btn btn-danger add-to-cart" th:attr="data-id=${iterStat.current.getId()}" href="#">Add
                             to cart</a>
                     </div>
                 </div>

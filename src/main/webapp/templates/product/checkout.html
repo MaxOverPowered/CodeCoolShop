@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
+    <title>checkout</title>
     <meta name="author" content="Codecool"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-
-    <title>Payment</title>
 
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
@@ -26,6 +25,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=PT+Sans:wght@400;700&display=swap"
@@ -38,44 +38,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=PT+Sans:wght@400;700&display=swap"
           rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
 
     <script src="/static/js/payment.js" type="module"></script>
 </head>
 <body>
-<div th:replace="navbar.html :: copy"></div>
-<div class="credit-card-box">
-    <h2>Payment</h2>
-    <form action="/payment" method="post" class="payment-form">
-        <h4 class="total">
-            <label>Total: <span th:text="${category.name}">total price</span></label>
-        </h4>
 
-        <div class="form-item">
-            <label for="card-holder">Card Holder</label>
-            <input class="long" type="text" id="card-holder" name="card-holder" placeholder="Card holder" required>
-        </div>
-        <div class="form-item">
-            <label for="card-number">Card Number</label>
-            <input class="long" type="number" id="card-number" name="card-number" maxlength="16" minlength="15"
-                   placeholder="Card number" required>
-        </div>
-        <div class="form-item ">
-            <span class="form-item date">
-                <label for="expiry">Expiry date</label>
-                <input class="date" type="number" id="expiry" name="expiry" maxlength="5" placeholder="MM/YY" required>
-            </span>
-            <span class="form-item">
-                <label for="cvv">CVC</label>
-                <input class="cvv" type="number" id="cvv" name="cvv" maxlength="3" placeholder="CVC" required>
-            </span>
-        </div>
-        <div class="submit-holder">
-            <input type="submit" class="link-button" value="Confirm and Pay">
-        </div>
-    </form>
+<h1>Checkout</h1>
+<div th:each="prod : ${products}">
+    <p th:text="${prod.name}"></p>
+    <p th:text="${prod.getPrice()}"></p>
 </div>
+<div th:each="pi : ${pieces}">
+    <p th:text="${pi}"></p>
+</div>
+<div th:text="${total}"></div>
 
+<a href="payment">
+    <button>Payment</button>
+</a>
 
 <div th:replace="footer.html :: copy"></div>
 </body>

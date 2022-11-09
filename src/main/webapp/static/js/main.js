@@ -1,14 +1,18 @@
 init();
+let valueInCart = document.querySelectorAll(".fa");
 
 function init() {
+    let buttons = document.getElementsByClassName("add-to-cart");
     const categoryButton = document.querySelectorAll('.category');
     const supplierButton = document.querySelectorAll('.supplier');
+    addItem(buttons);
     categoryButton.forEach(button => button.addEventListener("click", async function (e) {
         e.preventDefault();
         let categoryId = e.currentTarget.getAttribute('category-id');
         let products = await apiGet(`/api/category?categoryId=${categoryId}`);
         removeContent();
         renderProduct(products);
+        addItem(buttons);
     }))
     supplierButton.forEach(button => button.addEventListener("click", async function (e) {
         e.preventDefault();
@@ -16,6 +20,7 @@ function init() {
         let products = await apiGet(`/api/supplier?supplierId=${supplierId}`);
         removeContent();
         renderProduct(products);
+        addItem(buttons);
     }))
 }
 
@@ -43,7 +48,7 @@ function renderProduct(products) {
                             <p class="lead" >${product.defaultPrice} ${product.defaultCurrency}</p>
                         </div>
                         <div class="card-text">
-                            <a class="btn btn-success add-to-cart">Add to cart</a>
+                            <a class="btn btn-danger add-to-cart" href="#" data-id="${product.id}">Add to cart</a
                         </div>
                     </div>
                 </div>`;
@@ -58,4 +63,36 @@ async function apiGet(url) {
     if (response.ok) {
         return await response.json();
     }
+}
+
+function increaseValueInShoppingCart() {
+    let value = parseInt(valueInCart[0].getAttribute("value"));
+    value += 1;
+    valueInCart[0].setAttribute("value", value.toString());
+}
+
+function decreaseValueInShoppingCart() {
+    let value = parseInt(valueInCart[0].getAttribute("value"));
+    value -= 1;
+    valueInCart[0].setAttribute("value", value.toString());
+}
+
+function addItem(buttons) {
+    for (let button of buttons) {
+        button.addEventListener("click", async function (event) {
+            increaseValueInShoppingCart();
+            let id = event.currentTarget.dataset.id;
+            let payload = {'id': id};
+            await apiPost("/api/add", payload);
+        });
+    }
+}
+
+async function apiPost(url, payload) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+    })
+    return await response.json();
 }
