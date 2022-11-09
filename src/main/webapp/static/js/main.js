@@ -1,11 +1,19 @@
 init();
 
 function init() {
-    const buttons = document.querySelectorAll('.category');
-    buttons.forEach(button => button.addEventListener("click", async function (e) {
+    const categoryButton = document.querySelectorAll('.category');
+    const supplierButton = document.querySelectorAll('.supplier');
+    categoryButton.forEach(button => button.addEventListener("click", async function (e) {
         e.preventDefault();
         let categoryId = e.currentTarget.getAttribute('category-id');
         let products = await apiGet(`/api/category?categoryId=${categoryId}`);
+        removeContent();
+        renderProduct(products);
+    }))
+    supplierButton.forEach(button => button.addEventListener("click", async function (e) {
+        e.preventDefault();
+        let supplierId = e.currentTarget.getAttribute('supplier-id');
+        let products = await apiGet(`/api/supplier?supplierId=${supplierId}`);
         removeContent();
         renderProduct(products);
     }))

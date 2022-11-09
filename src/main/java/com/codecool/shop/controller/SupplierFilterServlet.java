@@ -1,9 +1,9 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Product;
-import com.codecool.shop.model.ProductCategory;
+import com.codecool.shop.model.Supplier;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -16,21 +16,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@WebServlet("/api/category")
-public class CategoryFilterServlet extends javax.servlet.http.HttpServlet {
+@WebServlet("/api/supplier")
+public class SupplierFilterServlet extends javax.servlet.http.HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
 
-            int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+            int supplierId = Integer.parseInt(request.getParameter("supplierId"));
 
-            ProductCategoryDaoMem productCategoryDaoMem = ProductCategoryDaoMem.getInstance();
+            SupplierDaoMem supplierDaoMem = SupplierDaoMem.getInstance();
             ProductDaoMem productDaoMem = ProductDaoMem.getInstance();
 
-            ProductCategory category = productCategoryDaoMem.find(categoryId);
+            Supplier supplier = supplierDaoMem.find(supplierId);
 
-            List<Product> productList = productDaoMem.getBy(category);
+            List<Product> productList = productDaoMem.getBy(supplier);
             List<HashMap<String, String>> products = new ArrayList<>();
 
             for (Product product : productList) {
