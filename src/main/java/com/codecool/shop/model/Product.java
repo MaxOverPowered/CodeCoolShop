@@ -28,6 +28,11 @@ public class Product extends BaseModel {
         this.defaultPrice = defaultPrice;
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
     public Currency getDefaultCurrency() {
         return defaultCurrency;
     }

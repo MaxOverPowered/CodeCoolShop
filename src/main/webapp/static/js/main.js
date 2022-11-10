@@ -71,11 +71,11 @@ function increaseValueInShoppingCart() {
     valueInCart[0].setAttribute("value", value.toString());
 }
 
-function decreaseValueInShoppingCart() {
-    let value = parseInt(valueInCart[0].getAttribute("value"));
-    value -= 1;
-    valueInCart[0].setAttribute("value", value.toString());
+function modifyQuantity() {
+    let quantityModifier = document.getElementById("quantity");
+    quantityModifier.addEventListener("click",)
 }
+
 
 function addItem(buttons) {
     for (let button of buttons) {
