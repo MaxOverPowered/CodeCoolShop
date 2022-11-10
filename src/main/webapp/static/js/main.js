@@ -38,21 +38,21 @@ function renderProduct(products) {
         outerDiv.classList.add("col-md-6");
         outerDiv.classList.add("col-lg-4");
         outerDiv.innerHTML = `<div class="card"  data-id=${product.id}>
-                    <img class=""   src="/static/img/product_${product.id}.jpg" alt=""/>
+                    <img class=""   src="/static/img/${product.image}.jpg" alt=""/>
                     <div class="card-header">
                         <h4 class="card-title" >${product.name}</h4>
                         <p class="card-text" >${product.description}</p>
                     </div>
-                    <div class="card-body">
+                     <div class="card-body">
                         <div class="card-text">
                             <p class="lead" >${product.defaultPrice} ${product.defaultCurrency}</p>
                         </div>
                         <div class="card-text">
-                            <a class="btn btn-danger add-to-cart" href="#" data-id="${product.id}">Add to cart</a
+                            <a class="btn btn-danger add-to-cart" href="#" data-id="${product.id}"><b>Add to cart</b></a>
                         </div>
                     </div>
                 </div>`;
-        contentDiv.appendChild(outerDiv);
+        contentDiv.appendChild(outerDiv);;
     }
 }
 

@@ -32,7 +32,7 @@ As a User, I want to have an index page where I can filter Products by Suppliers
 
 As a User, I want to have a Shopping Cart so that I can add products which I want to buy.
 
-    In the Product list, the Products have an "Add to cart" button. Clicking the "Add to cart" button creates a new Order for storing cart data and a new LineItem with the quantity (default: 1) and price of the Product. This data is stored on the server.
+    In the Product list, the Products have an "3Add to cart" button. Clicking the "Add to cart" button creates a new Order for storing cart data and a new LineItem with the quantity (default: 1) and price of the Product. This data is stored on the server.
     In the Product list, the Products have an "Add to cart" button. Clicking the "Add to cart" button displays the number of cart items in the Page header 
 
 
