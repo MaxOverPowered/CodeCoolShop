@@ -35,13 +35,13 @@
 <body>
 <div th:replace="navbar.html :: copy"></div>
 <div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
+    <h1 style="color:black;"><b>Codecool Shop</b></h1>
     <a href="checkout"><i class="fa badge fa-lg" value=0>&#xf07a;</i></a>
 </div>
 
 <div class="container">
     <div class="dropdown">
-        <button class="btn btn-danger">Category</button>
+        <button class="btn btn-danger"><b>Category</b></button>
         <div class="dropdown-content">
             <a href="/" th:each="cat,iterStat : ${categories}" th:category-id="${cat.id}" class="category">
                 <p th:text="${cat.name}"></p>
@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="dropdown">
-        <button class="btn btn-danger">Supplier</button>
+        <button class="btn btn-danger"><b>Supplier</b></button>
         <div class="dropdown-content">
             <a href="/" th:each="sup,iterStat : ${suppliers}" th:supplier-id="${sup.id}" class="supplier">
                 <p th:text="${sup.name}"></p>
@@ -72,8 +72,8 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-danger add-to-cart" th:attr="data-id=${iterStat.current.getId()}" href="#">Add
-                            to cart</a>
+                        <a class="btn btn-danger add-to-cart" th:attr="data-id=${iterStat.current.getId()}" href="#"><b>Add
+                            to cart</b></a>
                     </div>
                 </div>
             </div>

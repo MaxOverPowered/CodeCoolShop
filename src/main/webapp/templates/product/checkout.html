@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>checkout</title>
+    <title>Checkout</title>
     <meta name="author" content="Codecool"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
@@ -44,20 +44,46 @@
     <script src="/static/js/payment.js" type="module"></script>
 </head>
 <body>
+<div th:replace="navbar.html :: copy"></div>
+<div class="container col col-sm-12 col-md-6 col-lg-4">
 
-<h1>Checkout</h1>
-<div th:each="prod : ${products}">
-    <p th:text="${prod.name}"></p>
-    <p th:text="${prod.getPrice()}"></p>
-</div>
-<div th:each="pi : ${pieces}">
-    <p th:text="${pi}"></p>
-</div>
-<div th:text="${total}"></div>
+    <h1 style="text-align: center"><b>Checkout</b></h1>
 
-<a href="payment">
-    <button>Payment</button>
-</a>
+    <table>
+        <thead>
+        <tr id="checkout-header">
+            <th class="child1">Image</th>
+            <th class="child1">Product</th>
+            <th class="child1">Unitprice</th>
+            <th class="child1">Quantity</th>
+            <th class="child1">Sum</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="parent" th:each="prod: ${products}">
+            <td><img src class="checkoutimg" th:attr="src='/static/img/' + ${prod.getProduct().picture} + '.jpg'"
+                     alt=""/></td>
+            <td class="child" th:text="${prod.getProduct().name}"></td>
+            <td class="child"
+                th:text="${prod.getProduct().defaultPrice + ' ' +  prod.getProduct().defaultCurrency}"></td>
+            <td><input type="number" id="quantity" th:attr="data-productid=${prod.getProduct().id}" name="quantity"
+                       th:value="${prod.getQuantity()}"></td>
+            <td class="child" th:text="${prod.getSumPricePerProduct() + ' ' +  prod.getProduct().defaultCurrency}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div style="margin-left: 141px" id="total-price">
+        <strong class="total-child">Total: </strong>
+        <strong class="total-child" th:text="${total} + ' USD'"></strong>
+    </div>
+    <a href="payment">
+        <button style="margin-left: 200px;margin-top:-20px" class="btn btn-danger"><b>Payment</b></button>
+    </a>
+    <br>
+    <br>
+</div>
 
 <div th:replace="footer.html :: copy"></div>
 </body>
