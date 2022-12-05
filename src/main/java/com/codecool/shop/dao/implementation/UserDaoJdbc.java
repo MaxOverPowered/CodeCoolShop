@@ -49,11 +49,12 @@ public class UserDaoJdbc implements UserDao {
     }
 
     @Override
-    public String check(String email) {
+    public String check(String username,String password) {
         try (Connection conn = dataSource.getConnection()) {
-            String sql = "Select * FROM users WHERE user_email=?";
+            String sql = "Select * FROM users WHERE username=? AND password=?";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setString(1, email);
+            st.setString(1, username);
+            st.setString(2, password);
             ResultSet rs = st.executeQuery();
             if (!rs.next()) {
                 return null;
