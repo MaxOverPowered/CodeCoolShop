@@ -19,12 +19,13 @@ public class UserDaoJdbc implements UserDao {
     @Override
     public void add(User user) {
         try (Connection conn = dataSource.getConnection()) {
-            String sql = "INSERT INTO users(username,password,user_email) VALUES (?,?,?)";
+            String sql = "INSERT INTO users(username,password,email) VALUES (?,?,?)";
 
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, user.getName());
             st.setString(2, user.getPassword());
             st.setString(3, user.getEmail());
+//            st.setString(3, user.getEmail());
             st.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error while adding user \"" + user.getName() + "\". Error type: ", e);
