@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 
-
 public class DatabaseManager {
     private static DatabaseManager databaseManager = null;
     private static DataSource dataSource;
@@ -26,7 +25,7 @@ public class DatabaseManager {
     }
 
     public static DatabaseManager getInstance() throws IOException {
-        if(databaseManager == null) {
+        if (databaseManager == null) {
             databaseManager = new DatabaseManager();
         }
         return databaseManager;
@@ -53,32 +52,21 @@ public class DatabaseManager {
     }
 
 
-
     public void setup() throws IOException, SQLException {
         dataSource = connect();
         userDao = new UserDaoJdbc(dataSource);
-//        productDataStore = new ProductDaoJdbc(dataSource);
-//        supplierDataStore = new SupplierDaoJdbc(dataSource);
-//        productCategoryDataStore = new ProductCategoryDaoJdbc(dataSource);
-//        orderDataStore = new OrderDaoJdbc(dataSource);
-//        lineItemDataStore = new LineItemDaoJdbc(dataSource);
-
     }
 
-//    private Properties initializeProperties() throws IOException {
-//        Properties properties = new Properties();
-//        String root = new File(System.getProperty("user.dir")).getAbsolutePath();
-//        String configPath = root+"/src/main/resources/connection.properties";
-//        properties.load(new FileInputStream(configPath));
-//
-//        return properties;
-//    }
     public void addNewUser(User user) {
         userDao.add(user);
     }
-    private DataSource connect( ) throws SQLException {
+
+    public void checkIfUserExist(String username, String password) {
+        userDao.check(username, password);
+    }
+
+    private DataSource connect() throws SQLException {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
-//        String url = properties.getProperty("url");
         String dbName = System.getenv("PSQL_DB_NAME");
         String user = System.getenv("PSQL_USER_NAME");
         String password = System.getenv("PSQL_PASSWORD");
@@ -98,7 +86,7 @@ public class DatabaseManager {
         return userDao;
     }
 
-    public void setupMem(){ //ezt az Initializer setup()-ból hoztuk ki ide (else ágból)
+    public void setupMem() {
         productDataStore = ProductDaoMem.getInstance();
         productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         supplierDataStore = SupplierDaoMem.getInstance();
