@@ -2,37 +2,22 @@ package com.codecool.shop.model;
 
 import java.math.BigDecimal;
 import java.util.Currency;
-<<<<<<< HEAD
 import java.util.Objects;
 
 public class Product extends BaseModel {
     private int id;
-=======
-
-public class Product extends BaseModel {
-
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
     private BigDecimal defaultPrice;
     private Currency defaultCurrency;
     private ProductCategory productCategory;
     private Supplier supplier;
-<<<<<<< HEAD
     private String picture;
 
     public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier, String picture) {
-=======
-
-
-    public Product(String name, BigDecimal defaultPrice, String currencyString, String description, ProductCategory productCategory, Supplier supplier) {
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
         super(name, description);
         this.setPrice(defaultPrice, currencyString);
         this.setSupplier(supplier);
         this.setProductCategory(productCategory);
-<<<<<<< HEAD
         this.picture = picture;
-=======
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
     }
 
     public BigDecimal getDefaultPrice() {
@@ -43,14 +28,11 @@ public class Product extends BaseModel {
         this.defaultPrice = defaultPrice;
     }
 
-<<<<<<< HEAD
     @Override
     public int getId() {
         return id;
     }
 
-=======
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
     public Currency getDefaultCurrency() {
         return defaultCurrency;
     }
@@ -77,13 +59,10 @@ public class Product extends BaseModel {
         this.productCategory.addProduct(this);
     }
 
-<<<<<<< HEAD
     public String getPicture() {
         return this.picture;
     }
 
-=======
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
     public Supplier getSupplier() {
         return supplier;
     }
@@ -93,10 +72,7 @@ public class Product extends BaseModel {
         this.supplier.addProduct(this);
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
     @Override
     public String toString() {
         return String.format("id: %1$d, " +
@@ -112,7 +88,6 @@ public class Product extends BaseModel {
                 this.productCategory.getName(),
                 this.supplier.getName());
     }
-<<<<<<< HEAD
 
     @Override
     public boolean equals(Object o) {
@@ -126,6 +101,4 @@ public class Product extends BaseModel {
     public int hashCode() {
         return Objects.hash(defaultPrice, defaultCurrency, productCategory, supplier);
     }
-=======
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
 }

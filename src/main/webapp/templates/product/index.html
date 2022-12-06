@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<<<<<<< HEAD
     <meta charset="utf-8"/>
     <meta name="author" content="Codecool"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -10,14 +9,6 @@
 
     <script src='/static/js/main.js' defer></script>
 
-=======
-    <meta charset="utf-8" />
-    <meta name="author" content="Codecool" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-    <title>Codecool Shop</title>
-
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
     <!-- Bootstrap components -->
     <!-- Latest compiled and minified Jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -25,7 +16,6 @@
 
     <!--Latest compiled and minified Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-<<<<<<< HEAD
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
 
@@ -33,19 +23,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
-=======
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
-<<<<<<< HEAD
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
 </head>
@@ -75,32 +57,12 @@
         </div>
     </div>
     <br>
-=======
-
-    <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
-</head>
-
-<body>
-
-<div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
-</div>
-
-<div class="container">
-    <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
-    </div>
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card">
-<<<<<<< HEAD
                 <img class="" src="http://placehold.it/400x250/000/fff"
                      th:attr="src='/static/img/' + ${prod.getPicture()} + '.jpg'" alt=""/>
-=======
-                <img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" />
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
@@ -110,12 +72,8 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-<<<<<<< HEAD
                         <a class="btn btn-danger add-to-cart" th:attr="data-id=${iterStat.current.getId()}" href="#"><b>Add
                             to cart</b></a>
-=======
-                        <a class="btn btn-success" href="#">Add to cart</a>
->>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
                     </div>
                 </div>
             </div>
