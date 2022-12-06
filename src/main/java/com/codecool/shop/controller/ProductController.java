@@ -1,5 +1,6 @@
 package com.codecool.shop.controller;
 
+<<<<<<< HEAD
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
@@ -8,6 +9,14 @@ import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.service.ProductService;
+=======
+import com.codecool.shop.dao.ProductCategoryDao;
+import com.codecool.shop.dao.ProductDao;
+import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
+import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.service.ProductService;
+import com.codecool.shop.config.TemplateEngineUtil;
+>>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -17,6 +26,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+<<<<<<< HEAD
+=======
+import java.util.HashMap;
+import java.util.Map;
+>>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
 
 @WebServlet(urlPatterns = {"/"})
 public class ProductController extends HttpServlet {
@@ -25,15 +39,23 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
+<<<<<<< HEAD
         SupplierDao supplierDao = SupplierDaoMem.getInstance();
+=======
+>>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+<<<<<<< HEAD
         context.setVariable("suppliers", supplierDao.getAll());
         context.setVariable("products", productService.getAllProduct());
         context.setVariable("categories", productService.getAllCategory());
 
+=======
+        context.setVariable("category", productService.getProductCategory(1));
+        context.setVariable("products", productService.getProductsForCategory(1));
+>>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
         // params.put("category", productCategoryDataStore.find(1));

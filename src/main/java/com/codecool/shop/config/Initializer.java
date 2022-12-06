@@ -1,6 +1,9 @@
 package com.codecool.shop.config;
 
+<<<<<<< HEAD
 import com.codecool.shop.dao.DatabaseManager;
+=======
+>>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
@@ -14,9 +17,13 @@ import com.codecool.shop.model.Supplier;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+<<<<<<< HEAD
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+=======
+import java.math.BigDecimal;
+>>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -28,6 +35,7 @@ public class Initializer implements ServletContextListener {
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
         //setting up a new supplier
+<<<<<<< HEAD
         Supplier lenovo = new Supplier("Lenovo", "Computers");
         supplierDataStore.add(lenovo);
         Supplier dell = new Supplier("Dell", "Computers");
@@ -68,5 +76,20 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Wilson Benesch Precision P2.0", new BigDecimal("14000"), "USD", "The Precision P2.0 are available in a wide range of finish options for the side panels, varying from real wood veneers to painted (including a rather fetching green), so there's likely to be something that suits most living environments.", speakers, wilson, "wilsonbenesch"));
         productDataStore.add(new Product("Fyne F501", new BigDecimal("1499"), "USD", "The F500 range consists of the F500 standmounting design (plus matching stands), two pairs of floorstanders (these F501s and the bigger, more expensive F502s), a centre speaker (F500C) and the F500FX dipole intended for use as rear speakers in a surround-sound set-up. And Fyne has a range of three subwoofers too.", speakers, fyne, "fyne"));
         productDataStore.add(new Product("Fyne Audio F302i", new BigDecimal("745"), "USD", "These are accommodating speakers in more than just size, too. They’re pretty open about room positioning so long as you don’t stuff them into a corner or right up against a wall. A little bit of toe-in towards the main listening position helps to add a degree of focus to the presentation, but the precise amount isn’t particularly critical to get a good, stable stereo image.", speakers, fyne, "fyne2"));
+=======
+        Supplier amazon = new Supplier("Amazon", "Digital content and services");
+        supplierDataStore.add(amazon);
+        Supplier lenovo = new Supplier("Lenovo", "Computers");
+        supplierDataStore.add(lenovo);
+
+        //setting up a new product category
+        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
+        productCategoryDataStore.add(tablet);
+
+        //setting up products and printing it
+        productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
+        productDataStore.add(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo));
+        productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon));
+>>>>>>> cdc4cebda8b11f8861073ec00b2d5533038d7def
     }
 }
