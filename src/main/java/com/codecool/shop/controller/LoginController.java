@@ -36,10 +36,11 @@ DatabaseManager databaseManager=new DatabaseManager();
 
         String username = req.getParameter("username");
         String password = req.getParameter("psw");
-//        User user = new User(username, password, email);
         try {
             databaseManager.setup();
             databaseManager.checkIfUserExist(username,password);
+            context.setVariable("username", username);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
