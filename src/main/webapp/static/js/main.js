@@ -37,22 +37,16 @@ function renderProduct(products) {
         outerDiv.classList.add("col-sm-12");
         outerDiv.classList.add("col-md-6");
         outerDiv.classList.add("col-lg-4");
-        outerDiv.innerHTML = `<div class="card"  data-id=${product.id}>
-                    <img class=""   src="/static/img/${product.image}.jpg" alt=""/>
-                    <div class="card-header">
-                        <h4 class="card-title" >${product.name}</h4>
+        outerDiv.innerHTML = `<div class="card d-flex align-items-stretch"  data-id=${product.id}>
+                    <img class="card-img-top cardimage"   src="/static/img/${product.image}.jpg" alt="Card Image"/>
+                    <div class="card-body d-flex flex-column">
+                        <h4 class="text-uppercase border-bottom mb-4" >${product.name}</h4>
                         <p class="card-text" >${product.description}</p>
+                            <p class="mt-auto align-self-start lead" >${product.defaultPrice} ${product.defaultCurrency}</p>
+                            <a class="btn btn-danger mt-auto align-self-start add-to-cart" href="#" data-id="${product.id}"><b>Add to cart</b></a>
                     </div>
-                     <div class="card-body">
-                        <div class="card-text">
-                            <p class="lead" >${product.defaultPrice} ${product.defaultCurrency}</p>
-                        </div>
-                        <div class="card-text">
-                            <a class="btn btn-danger add-to-cart" href="#" data-id="${product.id}"><b>Add to cart</b></a>
-                        </div>
-                    </div>
-                </div>`;
-        contentDiv.appendChild(outerDiv);;
+                  </div>`;
+        contentDiv.appendChild(outerDiv);
     }
 }
 
@@ -73,7 +67,7 @@ function increaseValueInShoppingCart() {
 
 function modifyQuantity() {
     let quantityModifier = document.getElementById("quantity");
-    quantityModifier.addEventListener("click",)
+    quantityModifier.addEventListener("click")
 }
 
 
