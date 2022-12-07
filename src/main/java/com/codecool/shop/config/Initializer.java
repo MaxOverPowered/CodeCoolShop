@@ -47,6 +47,7 @@ public class Initializer implements ServletContextListener {
 //        User user = new User(1, "sss", "emailulLuiValerica");
         try {
             databaseManager.setup();
+            databaseManager.getProductDataStore().getAll();
 //            databaseManager.addNewUser(user);
 
         } catch (SQLException | IOException e) {
