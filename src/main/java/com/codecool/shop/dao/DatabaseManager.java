@@ -55,6 +55,7 @@ public class DatabaseManager {
     public void setup() throws IOException, SQLException {
         dataSource = connect();
         userDao = new UserDaoJdbc(dataSource);
+        productDataStore = new ProductDaoJdbc(dataSource);
     }
 
     public void addNewUser(User user) {
