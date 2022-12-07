@@ -13,9 +13,17 @@ import java.util.List;
 
 public class ProductCategoryJdbc implements ProductCategoryDao {
     private static DataSource dataSource = null;
+    private static ProductCategoryJdbc instance = null;
 
     public ProductCategoryJdbc(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public static ProductCategoryJdbc getInstance() {
+        if (instance == null) {
+            instance = new ProductCategoryJdbc(dataSource);
+        }
+        return instance;
     }
 
     @Override
