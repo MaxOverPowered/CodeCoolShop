@@ -35,16 +35,16 @@ public class ProductCategoryJdbc implements ProductCategoryDao {
     public ProductCategory find(int id) {
         try (Connection conn = dataSource.getConnection();) {
             ResultSet rs;
-            String sql = "select * from category where category_id=?";
+            String sql = "select category_name,category_department from category where category_id=?";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(id, 1);
-            rs = conn.createStatement().executeQuery(sql);
+            st.setInt(1,id);
+            rs = st.executeQuery();
+            if (!rs.next()) return null;
             String name =rs.getString(1);
             String department =rs.getString(2);
             ProductCategory productCategory = new ProductCategory(name,department);
+            productCategory.setId(id);
             return productCategory;
-
-
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
