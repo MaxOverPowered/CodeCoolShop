@@ -50,7 +50,7 @@ function renderProduct(products) {
                             <p class="lead" >${product.defaultPrice} ${product.defaultCurrency}</p>
                         </div>
                         <div class="card-text">
-                            <a class="btn btn-danger add-to-cart" href="#" data-id="${product.id}"><b>Add to cart</b></a>
+                            <a class="btn btn-danger add-to-cart" data-id="${product.id}"><b>Add to cart</b></a>
                         </div>
                     </div>
                 </div>`;
