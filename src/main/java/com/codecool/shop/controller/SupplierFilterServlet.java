@@ -1,6 +1,6 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.ProductDaoJdbc;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.Supplier;
@@ -26,7 +26,7 @@ public class SupplierFilterServlet extends javax.servlet.http.HttpServlet {
             int supplierId = Integer.parseInt(request.getParameter("supplierId"));
 
             SupplierDaoMem supplierDaoMem = SupplierDaoMem.getInstance();
-            ProductDaoMem productDaoMem = ProductDaoMem.getInstance();
+            ProductDaoJdbc productDaoMem = ProductDaoJdbc.getInstance();
 
             Supplier supplier = supplierDaoMem.find(supplierId);
 
