@@ -49,7 +49,7 @@ public class RegisterController extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        resp.sendRedirect("/");
+        resp.sendRedirect("/login");
 
     }
 }
