@@ -64,10 +64,10 @@ public class ProductCategoryJdbc implements ProductCategoryDao {
             String sql = "SELECT category_id,category_name, category_department, category_description FROM category";
             List<ProductCategory> result = new ArrayList<>();
             PreparedStatement st = conn.prepareStatement(sql);
-            rs=st.executeQuery();
+            rs = conn.createStatement().executeQuery(sql);
+
             while (rs.next()) {
 //                rs = conn.createStatement().executeQuery(sql);
-
                 int categoryId = rs.getInt(1);
                 String name = rs.getString(2);
                 String description = rs.getString(4);

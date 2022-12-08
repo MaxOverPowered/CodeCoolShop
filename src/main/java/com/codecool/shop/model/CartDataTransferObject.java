@@ -11,7 +11,7 @@ public class CartDataTransferObject {
     public CartDataTransferObject(Product product, int quantity) {
         this.product = product;
         this.quantity = quantity;
-        this.sumPricePerProduct = product.getDefaultPrice().multiply(BigDecimal.valueOf(quantity));
+        this.sumPricePerProduct = getProduct().getDefaultPrice().multiply(BigDecimal.valueOf(quantity));
     }
 
     public Product getProduct() {

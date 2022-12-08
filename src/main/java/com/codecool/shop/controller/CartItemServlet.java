@@ -2,7 +2,7 @@ package com.codecool.shop.controller;
 
 
 import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.ProductDaoJdbc;
 import com.codecool.shop.model.BaseModel;
 import com.codecool.shop.model.CartItem;
 import com.codecool.shop.model.Product;
@@ -22,7 +22,6 @@ public class CartItemServlet extends HttpServlet {
 
         String url = request.getRequestURL().toString();
 
-        //this is a way to get payload from a post request
         StringBuilder buffer = new StringBuilder();
         BufferedReader reader = request.getReader();
         String line;
@@ -32,11 +31,10 @@ public class CartItemServlet extends HttpServlet {
         }
         String data = buffer.toString();
 
-        //this is converting from json object(we can just take a class, which has a getId() method, or create a new class
-        // with the function for returning a desired variable
+
         Gson gson = new Gson();
         BaseModel convertedData = gson.fromJson(data, BaseModel.class);
-        Product clicked = ProductDaoMem.getInstance().find(convertedData.getId()); // this is the id
+        Product clicked = ProductDaoJdbc.getInstance().find(convertedData.getId()); // this is the id
         CartItem cartItem = new CartItem(clicked);
         CartDaoMem shoppingCart = CartDaoMem.getInstance();
         shoppingCart.add(cartItem);
