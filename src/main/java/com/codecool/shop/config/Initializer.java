@@ -4,11 +4,12 @@ import com.codecool.shop.dao.DatabaseManager;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dao.implementation.ProductCategoryJdbc;
+import com.codecool.shop.dao.implementation.ProductDaoJdbc;
+import com.codecool.shop.dao.implementation.SupplierDaoJdbc;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
+import com.codecool.shop.model.Supplier;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -20,7 +21,7 @@ import java.util.List;
 
 @WebListener
 public class Initializer implements ServletContextListener {
-DatabaseManager databaseManager = new DatabaseManager();
+    DatabaseManager databaseManager = new DatabaseManager();
 
     public Initializer() throws IOException {
     }
@@ -28,12 +29,12 @@ DatabaseManager databaseManager = new DatabaseManager();
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
-        ProductDao productDataStore = ProductDaoMem.getInstance();
-        List<Product> productDataList=new ArrayList<>();
-        ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
+        ProductDao productDataStore = ProductDaoJdbc.getInstance();
+        List<Product> productDataList = new ArrayList<>();
+        ProductCategoryDao productCategoryDataStore = ProductCategoryJdbc.getInstance();
         List<ProductCategory> productCategoryList = new ArrayList<>();
-        SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
-
+        SupplierDao supplierDataStore = SupplierDaoJdbc.getInstance();
+        List<Supplier> supplierList = new ArrayList<>();
         //setting up a new supplier
 //        Supplier lenovo = new Supplier("Lenovo", "Computers");
 //        supplierDataStore.add(lenovo);
@@ -49,15 +50,19 @@ DatabaseManager databaseManager = new DatabaseManager();
 //        User user = new User(1, "sss", "emailulLuiValerica");
         try {
             databaseManager.setup();
-            productDataList=  databaseManager.getProductDataStore();
-            productCategoryList=databaseManager.getProductCategoryDataStore();
+            productDataList = databaseManager.getProductDataStore();
+            productCategoryList = databaseManager.getProductCategoryDataStore();
+            supplierList = databaseManager.getSupplierDataStore();
             System.out.println(productDataList);
-            for (Product product:productDataList) {
+            for (Product product : productDataList) {
                 System.out.println(product);
                 productDataStore.add(product);
             }
-            for (ProductCategory category:productCategoryList) {
+            for (ProductCategory category : productCategoryList) {
                 productCategoryDataStore.add(category);
+            }
+            for (Supplier supplier : supplierList) {
+                supplierDataStore.add(supplier);
             }
 //            databaseManager.addNewUser(user);
 

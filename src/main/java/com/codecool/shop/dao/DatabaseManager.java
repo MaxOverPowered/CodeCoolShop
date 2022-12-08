@@ -3,6 +3,7 @@ package com.codecool.shop.dao;
 import com.codecool.shop.dao.implementation.*;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
+import com.codecool.shop.model.Supplier;
 import com.codecool.shop.model.User;
 import org.postgresql.ds.PGSimpleDataSource;
 
@@ -39,11 +40,11 @@ public class DatabaseManager {
     }
 
     public List<Product> getProductDataStore() {
-        return  productDataStore.getAll();
+        return productDataStore.getAll();
     }
 
-    public SupplierDao getSupplierDataStore() {
-        return supplierDataStore;
+    public List<Supplier> getSupplierDataStore() {
+        return supplierDataStore.getAll();
     }
 
     public List<ProductCategory> getProductCategoryDataStore() {
@@ -59,7 +60,8 @@ public class DatabaseManager {
         dataSource = connect();
         userDao = new UserDaoJdbc(dataSource);
         productDataStore = new ProductDaoJdbc(dataSource);
-        productCategoryDataStore=new ProductCategoryJdbc(dataSource);
+        productCategoryDataStore = new ProductCategoryJdbc(dataSource);
+        supplierDataStore = new SupplierDaoJdbc(dataSource);
     }
 
     public void addNewUser(User user) {
