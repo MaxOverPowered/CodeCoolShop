@@ -25,7 +25,6 @@ public class UserDaoJdbc implements UserDao {
             st.setString(1, user.getName());
             st.setString(2, user.getPassword());
             st.setString(3, user.getEmail());
-//            st.setString(3, user.getEmail());
             st.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error while adding user \"" + user.getName() + "\". Error type: ", e);

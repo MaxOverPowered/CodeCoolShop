@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 @WebServlet(name = "RegisterServlet", urlPatterns = {"/register"}, loadOnStartup = 5)
 public class RegisterController extends HttpServlet {
-DatabaseManager databaseManager = new DatabaseManager();
+    DatabaseManager databaseManager = new DatabaseManager();
 
     public RegisterController() throws IOException {
     }
@@ -27,12 +27,7 @@ DatabaseManager databaseManager = new DatabaseManager();
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
-//        String username = req.getParameter("username");
-//        String email = req.getParameter("email");
-//        String password = req.getParameter("psw");
-//        User user = new User(username, password, email);
-//        databaseManager.addNewUser(user);
-        engine.process("product/register.html",context,resp.getWriter());
+        engine.process("product/register.html", context, resp.getWriter());
 
 
 //        User user = new User();
@@ -54,7 +49,7 @@ DatabaseManager databaseManager = new DatabaseManager();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        engine.process("product/index.html",context,resp.getWriter());
+        resp.sendRedirect("/");
 
     }
 }
