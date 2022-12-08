@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Login Form</title>
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
 </head>
 <body>
-<h2>Login Page</h2><br>
+<h2><b>Login</b></h2><br>
 <div class="login">
-    <form id="login"  method="post">
-        <label><b>User Name
+    <form id="login" method="post">
+        <label><b>Username
         </b>
         </label>
         <input type="text" name="username" id="username" placeholder="Username">
-        <br><br>
+        <br>
         <label><b>Password
         </b>
         </label>
         <input type="Password" name="psw" id="psw" placeholder="Password">
         <br><br>
-        <input type="button" name="log" id="log" value="Log In Here">
-        <button type="submit" >Login</button>
-
-        <br><br>
+        <button type="submit" class="btn btn-danger butonlogin"><b>Login</b></button>
     </form>
 </div>
 </body>
