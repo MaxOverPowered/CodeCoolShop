@@ -2,18 +2,18 @@ package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.model.CartDataTransferObject;
+import com.codecool.shop.model.CartItem;
 import com.codecool.shop.model.Product;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 public class CartDaoMem implements CartDao {
-    private Map<Product, Integer> cartItems = new HashMap<>();
-    ;
+    private Map<Product, Integer> cartItems = new HashMap<>();;
 
     private static CartDaoMem instance = null;
 
@@ -28,20 +28,27 @@ public class CartDaoMem implements CartDao {
     }
 
     @Override
-    public void add(Product product) {
-        cartItems.merge(product, 1, Integer::sum);
+    public void add(CartItem cartItem) {
+        cartItems.merge(cartItem.getProduct(), 1, Integer::sum);
     }
 
-    @Override
-    public void remove(int id) {
 
+
+    public void updateProduct(Product product, int amount){
+
+        cartItems.put(product, amount);
+
+        if (cartItems.get(product).equals(0)){
+
+            cartItems.remove(product);
+
+        }
     }
-
     @Override
     public String toString() {
         StringBuilder content = new StringBuilder();
 
-        for (Map.Entry<Product, Integer> entry : cartItems.entrySet()) {
+        for(Map.Entry<Product, Integer> entry: cartItems.entrySet()) {
             content.append(entry);
             content.append(", ");
         }
@@ -49,9 +56,10 @@ public class CartDaoMem implements CartDao {
         return content.toString();
     }
 
-    public BigDecimal getTotalPrice() {
+
+    public BigDecimal getTotalPrice(){
         List<BigDecimal> multiplies = new ArrayList<>();
-        cartItems.forEach((k, v) -> {
+        cartItems.forEach((k,v) -> {
             multiplies.add(k.getDefaultPrice().multiply(BigDecimal.valueOf(v)));
         });
         BigDecimal result = multiplies.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
