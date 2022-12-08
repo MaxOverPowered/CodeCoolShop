@@ -13,9 +13,7 @@
     background-color: whitesmoke;
 }
 
-/*.card {*/
-/*    background-color:black;*/
-/*}*/
+
 .thumbnail {
     margin-bottom: 20px;
     padding: 0px;
@@ -340,17 +338,22 @@ label {
     box-shadow: 0px 5px 10px 0px rgba(255, 0, 0, 0.71);
 }
 
-.cardimage:hover{
+.cardimage:hover {
     transform: translateY(-5px);
     box-shadow: 0px 10px 20px 2px rgb(255, 0, 0, 0.71);
 }
 
-.addtocart{
+.addtocart {
     margin: 0 auto;
     display: block;
 }
 
-.butonlogin{
+.butonlogin {
     margin: 0 auto;
     display: block;
+}
+
+#sss {
+    background-color: #ba2a2ac2;
+    border: 0;
 }

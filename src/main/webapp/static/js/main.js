@@ -39,9 +39,9 @@ function renderProduct(products) {
         outerDiv.classList.add("col-sm-12");
         outerDiv.classList.add("col-md-6");
         outerDiv.classList.add("col-lg-4");
-        outerDiv.innerHTML = `<div class="card"  data-id=${product.id}>
-                    <img class=""   src="/static/img/${product.image}.jpg" alt=""/>
-                    <div class="card-header">
+        outerDiv.innerHTML = `<br><div style="min-height: 200px; min-width: 200px" id="sss" class="card d-flex align-items-stretch"  data-id=${product.id}>
+                    <img class="cardimage"   src="/static/img/${product.image}.jpg" alt=""/>
+                    <div style="min-height: 200px; min-width: 200px" class="card-header">
                         <h4 class="card-title" >${product.name}</h4>
                         <p class="card-text" >${product.description}</p>
                     </div>

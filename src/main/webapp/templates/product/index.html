@@ -86,7 +86,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 mb-3 d-flex align-items-stretch" th:each="prod,iterStat : ${products}">
-                        <div class="card">
+                        <div id="sss" class="card">
                             <img class="card-img-top cardimage" src="http://placehold.it/400x250/000/fff"
                                  th:attr="src='/static/img/' + ${prod.getPicture()} + '.jpg'" alt="Card Image">
                             <div class="card-body d-flex flex-column">
