@@ -44,6 +44,5 @@ DatabaseManager databaseManager=new DatabaseManager();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        engine.process("product/index.html",context,resp.getWriter());
-    }
+    resp.sendRedirect("/"+username);}
 }

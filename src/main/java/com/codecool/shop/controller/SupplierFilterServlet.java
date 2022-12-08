@@ -1,7 +1,7 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.dao.implementation.ProductDaoMem;
-import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dao.implementation.ProductDaoJdbc;
+import com.codecool.shop.dao.implementation.SupplierDaoJdbc;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.Supplier;
 import com.google.gson.Gson;
@@ -25,12 +25,12 @@ public class SupplierFilterServlet extends javax.servlet.http.HttpServlet {
 
             int supplierId = Integer.parseInt(request.getParameter("supplierId"));
 
-            SupplierDaoMem supplierDaoMem = SupplierDaoMem.getInstance();
-            ProductDaoMem productDaoMem = ProductDaoMem.getInstance();
+            SupplierDaoJdbc supplierDaoJdbc = SupplierDaoJdbc.getInstance();
+            ProductDaoJdbc productDaoJdbc = ProductDaoJdbc.getInstance();
 
-            Supplier supplier = supplierDaoMem.find(supplierId);
+            Supplier supplier = supplierDaoJdbc.find(supplierId);
 
-            List<Product> productList = productDaoMem.getBy(supplier);
+            List<Product> productList = productDaoJdbc.getBy(supplier);
             List<HashMap<String, String>> products = new ArrayList<>();
 
             for (Product product : productList) {

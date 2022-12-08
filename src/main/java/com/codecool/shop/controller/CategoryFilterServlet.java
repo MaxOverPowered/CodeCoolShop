@@ -1,7 +1,8 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
-import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.DatabaseManager;
+import com.codecool.shop.dao.implementation.ProductCategoryJdbc;
+import com.codecool.shop.dao.implementation.ProductDaoJdbc;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
 import com.google.gson.Gson;
@@ -12,23 +13,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 @WebServlet("/api/category")
 public class CategoryFilterServlet extends javax.servlet.http.HttpServlet {
+    DatabaseManager dataSource = new DatabaseManager();
+
+    public CategoryFilterServlet() throws IOException, SQLException {
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
 
             int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+dataSource.setup();
+            ProductCategoryJdbc productCategoryJdbc = ProductCategoryJdbc.getInstance();
+            ProductDaoJdbc productDaoMem = ProductDaoJdbc.getInstance();
 
-            ProductCategoryDaoMem productCategoryDaoMem = ProductCategoryDaoMem.getInstance();
-            ProductDaoMem productDaoMem = ProductDaoMem.getInstance();
-
-            ProductCategory category = productCategoryDaoMem.find(categoryId);
+            ProductCategory category = productCategoryJdbc.find(categoryId);
 
             List<Product> productList = productDaoMem.getBy(category);
             List<HashMap<String, String>> products = new ArrayList<>();
