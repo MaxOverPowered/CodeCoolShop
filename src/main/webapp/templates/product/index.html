@@ -93,10 +93,12 @@
                                 <h4 class="text-uppercase border-bottom mb-4" th:text="${prod.name}">Product name</h4>
                                 <p class="card-text" th:text="${prod.description}">Product description... </p>
                                 <p class="mt-auto align-self-start lead" th:text="${prod.getPrice()}">100 USD</p>
-                                <a class="btn btn-danger mt-auto align-self-start add-to-cart"
-                                   th:attr="data-id=${iterStat.current.getId()}"
-                                   href="#"><b>Add
-                                    to cart</b></a>
+                                <div class="row addtocart">
+                                    <a class="btn btn-danger add-to-cart"
+                                       th:attr="data-id=${iterStat.current.getId()}"
+                                       href="#"><b>Add
+                                        to cart</b></a>
+                                </div>
                             </div>
                         </div>
                     </div>

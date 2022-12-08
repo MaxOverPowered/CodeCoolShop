@@ -294,19 +294,19 @@ body {
     margin: auto;
     margin: 20 0 0 450px;
     padding: 80px;
-    background: #23463f;
+    background: #ffffff;
     border-radius: 15px;
 
 }
 
 h2 {
     text-align: center;
-    color: #277582;
+    color: rgba(255, 0, 0, 0.7);
     padding: 20px;
 }
 
 label {
-    color: #08ffd1;
+    color: #000000;
     font-size: 17px;
 }
 
@@ -343,4 +343,14 @@ label {
 .cardimage:hover{
     transform: translateY(-5px);
     box-shadow: 0px 10px 20px 2px rgb(255, 0, 0, 0.71);
+}
+
+.addtocart{
+    margin: 0 auto;
+    display: block;
+}
+
+.butonlogin{
+    margin: 0 auto;
+    display: block;
 }

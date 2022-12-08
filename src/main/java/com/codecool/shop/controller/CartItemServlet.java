@@ -1,10 +1,10 @@
 package com.codecool.shop.controller;
 
 
-import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.model.BaseModel;
+import com.codecool.shop.model.CartItem;
 import com.codecool.shop.model.Product;
 import com.google.gson.Gson;
 
@@ -16,9 +16,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 
-@WebServlet(name = "cartPost", urlPatterns = {"/api/add"})
-public class PostServlet extends HttpServlet {
+@WebServlet(name = "cartPost", urlPatterns = {"/api/cartitem"})
+public class CartItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String url = request.getRequestURL().toString();
 
         //this is a way to get payload from a post request
         StringBuilder buffer = new StringBuilder();
@@ -34,9 +36,9 @@ public class PostServlet extends HttpServlet {
         // with the function for returning a desired variable
         Gson gson = new Gson();
         BaseModel convertedData = gson.fromJson(data, BaseModel.class);
-
         Product clicked = ProductDaoMem.getInstance().find(convertedData.getId()); // this is the id
-        CartDao shoppingCart = CartDaoMem.getInstance();
-        shoppingCart.add(clicked);
+        CartItem cartItem = new CartItem(clicked);
+        CartDaoMem shoppingCart = CartDaoMem.getInstance();
+        shoppingCart.add(cartItem);
     }
 }
